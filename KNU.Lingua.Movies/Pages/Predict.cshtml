@@ -1,0 +1,36 @@
+﻿@page
+@model KNU.Lingua.Movies.Pages.PredictModel
+@{
+    ViewData["Title"] = $"{Model.Movie.FullTitle} info";
+}
+
+
+<h4>@Model.Movie.FullTitle</h4>
+<div>
+    <ul>
+        <li>Year: @Model.Movie.Year</li>
+        <li>
+            <a href="@Model.Movie.Url">Wikipedia</a>
+        </li>
+        <li>Predicted Genre: @Model.Genre</li>
+        <li>
+            <a asp-page="/Reviews" asp-route-tagId="@Model.Movie.Id"> Reviews (predicted negative / positive) </a>
+        </li>
+        <li>
+            Tags:
+            <ol>
+                @foreach (var tag in Model.Tags)
+                {
+                <li>
+                    <p>Name: @tag.Name</p>
+                    <p>Appeared in text (times): @tag.OccurencesCount</p>
+                    <p>Normalized: @tag.NormCount</p>
+                </li>
+                }
+            </ol>
+        </li>
+    </ul>
+    <p>
+        @Model.Movie.PlotFull.PlainText
+    </p>
+</div>

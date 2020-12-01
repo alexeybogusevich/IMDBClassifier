@@ -1,0 +1,57 @@
+﻿@page
+@model KNU.Lingua.Movies.Pages.ResultMoviesModel
+@{
+    ViewData["Title"] = $"IMDB {Model.Header} as on {DateTime.Now}";
+}
+
+<h2>IMDB @Model.Header as on @DateTime.Now</h2>
+@if (Model.Movies.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Movies[0].Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Movies[0].Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Movies[0].Year)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Movies[0].IMDbRating)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Movies[0].Rank)
+                </th>
+                <th> Feature </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Movies)
+            {
+                <tr>
+                    <td>
+                        <a href="https://www.imdb.com/title/@item.Id">@Html.DisplayFor(modelItem => item.Id)</a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Year)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IMDbRating)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rank)
+                    </td>
+                    <td>
+                        <a asp-page="/Predict" asp-route-id="@item.Id">Predict</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

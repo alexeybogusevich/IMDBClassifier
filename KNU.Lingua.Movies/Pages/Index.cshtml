@@ -1,0 +1,21 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div style="padding: 200px 0;" class="text-center">
+    <h1 class="display-4">Welcome to IMDB Classifier!</h1>
+    <p></p>
+    <form method="post" name="MostPopular">
+        <input type="submit" asp-page-handler="MostPopular" value="Most Popular Movies" />
+    </form>
+    <p></p>
+    <form method="post" name="Top250Movies">
+        <input type="submit" asp-page-handler="Top250Movies" value="All Time Top 250 Movies" />
+    </form>
+    <p></p>
+    <form method="post" name="BoxOfficeAllTime">
+        <input type="submit" asp-page-handler="BoxOfficeAllTime" value="All Time Most Box Office Movies" />
+    </form>
+</div>
