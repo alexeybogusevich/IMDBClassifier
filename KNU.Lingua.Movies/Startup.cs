@@ -1,7 +1,10 @@
 using KNU.Lingua.Movies.Services.GenrePredictor;
 using KNU.Lingua.Movies.Services.MovieLoader;
 using KNU.Lingua.Movies.Services.PorterStemmerFilter;
+using KNU.Lingua.Movies.Services.ReviewPredictor;
 using KNU.Lingua.Movies.Services.StopWordsFilter;
+using KNU.Lingua.Movies.Services.TagManager;
+using KNU.Lingua.Movies.Services.TagService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -26,8 +29,11 @@ namespace KNU.Lingua.Movies
 
             services.AddScoped<IStopWordsFilter, StopWordsFilter>();
             services.AddScoped<IPorterStemmerFilter, PorterStemmerFilter>();
+            services.AddScoped<ITagService, TagService>();
+            services.AddScoped<ITagManager, TagManager>();
             services.AddScoped<IGenrePredictor, GenrePredictor>();
             services.AddScoped<IMovieLoader, MovieLoader>();
+            services.AddScoped<IReviewPredictor, ReviewPredictor>();
 
             services.AddHttpClient();
         }

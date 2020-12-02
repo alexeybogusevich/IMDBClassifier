@@ -10,5 +10,8 @@ namespace KNU.Lingua.Movies.Constants
         // Genre Predictor AF
         public const string GenrePredictor = nameof(GenrePredictor);
         public const string Code = nameof(Code);
+
+        // Reviews Manager AF
+        public const string ReviewsManager = nameof(ReviewsManager);
     }
 }

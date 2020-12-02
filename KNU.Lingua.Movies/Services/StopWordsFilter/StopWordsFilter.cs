@@ -326,7 +326,12 @@ namespace KNU.Lingua.Movies.Services.StopWordsFilter
         { "your", true },
         { "yours", true },
         { "yourself", true },
-        { "yourselves", true }
+        { "yourselves", true },
+        { "film", true },
+        { "scene", true },
+        { "tv", true },
+        { "actor", true },
+        { "actress", true }
     };
 
         private static readonly string[] _delimiters = new string[]

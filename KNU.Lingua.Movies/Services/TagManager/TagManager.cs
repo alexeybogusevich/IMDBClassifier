@@ -2,10 +2,8 @@
 using KNU.Lingua.Movies.Services.PorterStemmerFilter;
 using KNU.Lingua.Movies.Services.StopWordsFilter;
 using KNU.Lingua.Movies.Services.TagService;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace KNU.Lingua.Movies.Services.TagManager
 {
@@ -32,7 +30,7 @@ namespace KNU.Lingua.Movies.Services.TagManager
             // Get top 10 tags from article
             var tags = tagService.GetTopTagsForNewsItem(filteredItem);
 
-            return tags.OrderBy(t => t.NormCount).ToList();
+            return tags.OrderByDescending(t => t.NormCount).ToList();
         }
     }
 }

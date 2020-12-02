@@ -1,5 +1,43 @@
 ﻿@page
 @model KNU.Lingua.Movies.Pages.ReviewsModel
 @{
+    ViewData["Title"] = $"{Model?.Prediction?.Title} reviews";
+}
 
+<h2>Most voted @Model?.Prediction?.Title reviews as on @DateTime.Now</h2>
+<h4>Mostly @Model.MostlyStatement</h4>
+<h4>Positive: @Model.PositiveCount, Negative: @Model.NegativeCount </h4>
+@if (Model.Prediction.Reviews.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Prediction.Reviews[0].Text)
+                </th>
+                <th>
+                    Predicted Sentiment
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Prediction.Reviews[0].Rating)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Prediction.Reviews)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Text)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PredictedSentiment)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rating)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }

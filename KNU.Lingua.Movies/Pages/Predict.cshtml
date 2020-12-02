@@ -14,23 +14,21 @@
         </li>
         <li>Predicted Genre: @Model.Genre</li>
         <li>
-            <a asp-page="/Reviews" asp-route-tagId="@Model.Movie.Id"> Reviews (predicted negative / positive) </a>
-        </li>
-        <li>
-            Tags:
-            <ol>
-                @foreach (var tag in Model.Tags)
-                {
-                <li>
-                    <p>Name: @tag.Name</p>
-                    <p>Appeared in text (times): @tag.OccurencesCount</p>
-                    <p>Normalized: @tag.NormCount</p>
-                </li>
-                }
-            </ol>
+            <a asp-page="/Reviews" asp-route-movieId="@Model.Movie.Id"> Reviews (predicted negative / positive) </a>
         </li>
     </ul>
     <p>
         @Model.Movie.PlotFull.PlainText
     </p>
+    Tags:
+    <ol>
+        @foreach (var tag in Model.Tags)
+        {
+            <li>
+                <p>@tag.Name</p>
+                <p>Appeared in text (times): @tag.OccurencesCount</p>
+                <p>Normalized: @tag.NormCount</p>
+            </li>
+        }
+    </ol>
 </div>
